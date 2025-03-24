@@ -1,13 +1,11 @@
+
+
 .header {
     padding-top: var(--mantine-spacing-sm);
     background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
     border-bottom: 1px solid light-dark(var(--mantine-color-gray-2), transparent);
     margin-bottom: 120px;
   }
-  
-.mainSection {
-    padding-bottom: var(--mantine-spacing-sm);
-}
   
 .user {
     color: light-dark(var(--mantine-color-black), var(--mantine-color-dark-0));
@@ -58,4 +56,17 @@
         border-color: light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-7));
         border-bottom-color: transparent;
     }
+}
+
+.containerLeft {
+    padding: 0;
+    margin-left: 0;
+    width: "100%";
+}
+
+.containerRight {
+    padding-bottom: var(--mantine-spacing-sm);
+    padding: 0;
+    margin-right: 0;
+    width: "100%";
 }

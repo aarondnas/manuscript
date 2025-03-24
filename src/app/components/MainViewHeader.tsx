@@ -25,27 +25,26 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './MainViewHeader.module.css';
 
 const user = {
-  name: 'Jane Spoonfighter',
-  email: 'janspoon@fighter.dev',
+  name: 'Max Mustermann',
+  email: 'maxmustermann@gmail.com',
   image: 'https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png',
 };
 
 const tabs = [
-  'Home',
-  'Orders',
-  'Education',
-  'Community',
-  'Forums',
-  'Support',
-  'Account',
-  'Helpdesk',
+  'File',
+  'Start',
+  'Layout',
+  'Help',
 ];
 
-export default function HeaderTabs() {
+interface MainViewHeaderProps {
+  onTabChange: (tab: string | null) => void; // Null jetzt inkludiert
+}
+
+export default function HeaderTabs({ onTabChange }: MainViewHeaderProps ) {
   const theme = useMantineTheme();
   const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
@@ -58,77 +57,14 @@ export default function HeaderTabs() {
 
   return (
     <div className={classes.header}>
-      <Container className={classes.mainSection} size="md">
-        <Group justify="space-between">
-          <MantineLogo size={28} />
+      <Group justify="space-between" w="100%">
 
-          <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
-
-          <Menu
-            width={260}
-            position="bottom-end"
-            transitionProps={{ transition: 'pop-top-right' }}
-            onClose={() => setUserMenuOpened(false)}
-            onOpen={() => setUserMenuOpened(true)}
-            withinPortal
-          >
-            <Menu.Target>
-              <UnstyledButton
-                className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
-              >
-                <Group gap={7}>
-                  <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
-                  <Text fw={500} size="sm" lh={1} mr={3}>
-                    {user.name}
-                  </Text>
-                  <IconChevronDown size={12} stroke={1.5} />
-                </Group>
-              </UnstyledButton>
-            </Menu.Target>
-            <Menu.Dropdown>
-              <Menu.Item
-                leftSection={<IconHeart size={16} color={theme.colors.red[6]} stroke={1.5} />}
-              >
-                Liked posts
-              </Menu.Item>
-              <Menu.Item
-                leftSection={<IconStar size={16} color={theme.colors.yellow[6]} stroke={1.5} />}
-              >
-                Saved posts
-              </Menu.Item>
-              <Menu.Item
-                leftSection={<IconMessage size={16} color={theme.colors.blue[6]} stroke={1.5} />}
-              >
-                Your comments
-              </Menu.Item>
-
-              <Menu.Label>Settings</Menu.Label>
-              <Menu.Item leftSection={<IconSettings size={16} stroke={1.5} />}>
-                Account settings
-              </Menu.Item>
-              <Menu.Item leftSection={<IconSwitchHorizontal size={16} stroke={1.5} />}>
-                Change account
-              </Menu.Item>
-              <Menu.Item leftSection={<IconLogout size={16} stroke={1.5} />}>Logout</Menu.Item>
-
-              <Menu.Divider />
-
-              <Menu.Label>Danger zone</Menu.Label>
-              <Menu.Item leftSection={<IconPlayerPause size={16} stroke={1.5} />}>
-                Pause subscription
-              </Menu.Item>
-              <Menu.Item color="red" leftSection={<IconTrash size={16} stroke={1.5} />}>
-                Delete account
-              </Menu.Item>
-            </Menu.Dropdown>
-          </Menu>
-        </Group>
-      </Container>
-      <Container size="md">
+      <Container className={classes.containerLeft} size="md">
         <Tabs
           defaultValue="Home"
           variant="outline"
           visibleFrom="sm"
+          onChange={onTabChange}
           classNames={{
             root: classes.tabs,
             list: classes.tabsList,
@@ -138,6 +74,74 @@ export default function HeaderTabs() {
           <Tabs.List>{items}</Tabs.List>
         </Tabs>
       </Container>
+
+        <Container className={classes.containerRight} size="md">
+          <Group justify="space-between">
+
+            <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+
+            <Menu
+              width={260}
+              position="bottom-end"
+              transitionProps={{ transition: 'pop-top-right' }}
+              onClose={() => setUserMenuOpened(false)}
+              onOpen={() => setUserMenuOpened(true)}
+              withinPortal
+            >
+              <Menu.Target>
+                <UnstyledButton
+                  className={cx(classes.user, { [classes.userActive]: userMenuOpened })}
+                >
+                  <Group gap={7}>
+                    <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
+                    <Text fw={500} size="sm" lh={1} mr={3}>
+                      {user.name}
+                    </Text>
+                    <IconChevronDown size={12} stroke={1.5} />
+                  </Group>
+                </UnstyledButton>
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Item
+                  leftSection={<IconHeart size={16} color={theme.colors.red[6]} stroke={1.5} />}
+                >
+                  Liked posts
+                </Menu.Item>
+                <Menu.Item
+                  leftSection={<IconStar size={16} color={theme.colors.yellow[6]} stroke={1.5} />}
+                >
+                  Saved posts
+                </Menu.Item>
+                <Menu.Item
+                  leftSection={<IconMessage size={16} color={theme.colors.blue[6]} stroke={1.5} />}
+                >
+                  Your comments
+                </Menu.Item>
+
+                <Menu.Label>Settings</Menu.Label>
+                <Menu.Item leftSection={<IconSettings size={16} stroke={1.5} />}>
+                  Account settings
+                </Menu.Item>
+                <Menu.Item leftSection={<IconSwitchHorizontal size={16} stroke={1.5} />}>
+                  Change account
+                </Menu.Item>
+                <Menu.Item leftSection={<IconLogout size={16} stroke={1.5} />}>Logout</Menu.Item>
+
+                <Menu.Divider />
+
+                <Menu.Label>Danger zone</Menu.Label>
+                <Menu.Item leftSection={<IconPlayerPause size={16} stroke={1.5} />}>
+                  Pause subscription
+                </Menu.Item>
+                <Menu.Item color="red" leftSection={<IconTrash size={16} stroke={1.5} />}>
+                  Delete account
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
+          </Group>
+          </Container>
+
+        </Group>
     </div>
   );
 }

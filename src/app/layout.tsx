@@ -1,16 +1,16 @@
-import { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: "Manuscript",
-  description: "Markdown Editor",
-};
+import { MantineProvider } from '@mantine/core';
+import '@mantine/core/styles.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     
       <html lang="en">
         <body>
+          <MantineProvider defaultColorScheme='dark'>
           {children}
+          </MantineProvider>
         </body>
       </html>
   );
