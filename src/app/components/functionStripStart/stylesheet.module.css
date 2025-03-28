@@ -1,0 +1,27 @@
+.functionStripDiv {
+    margin: 1rem;
+}
+
+.ButtonFunctionDefault{
+    width: 2rem;
+    height: 1.5rem;
+    font-size: 0.75rem;
+    padding: 0rem;
+    margin: 0rem;
+    border: 0px;
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    color: '#bebebe'
+}
+
+.ButtonFunctionDefault:hover {
+    background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
+}
+
+.svgIconDiv {
+    fill: currentColor;
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+  }

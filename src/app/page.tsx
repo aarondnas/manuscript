@@ -1,6 +1,6 @@
 'use client';
 
-import MainView from './pages/Main/page.tsx'
+import MainView from './pages/main/page.tsx'
 
 export default function Home() {
     return (

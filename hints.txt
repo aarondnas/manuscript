@@ -1,0 +1,5 @@
+css classes:
+
+dont do .tipttap-container{} !
+correct: .tiptapContainer{}
+

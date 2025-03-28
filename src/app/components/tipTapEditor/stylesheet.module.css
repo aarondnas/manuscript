@@ -1,0 +1,35 @@
+/* In Ihrer CSS-Modul-Datei */
+.a4Container {
+    width: 90%;
+    max-width: 800px;
+    aspect-ratio: 1 / 1.4142;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 2rem auto;
+    padding: 1rem;
+    overflow: hidden;
+  }
+  
+  /* Haupt-Editor-Container */
+  .editorContainer :global(.tiptap.ProseMirror) {
+    /* Alle möglichen Rahmen-Varianten entfernen */
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    
+    /* Cursor-Stil */
+    caret-color: #000;
+  }
+  
+  /* Fokus-Status - wichtig für Tiptap */
+  .editorContainer :global(.ProseMirror-focused) {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }
+  
+  /* Gezielt für die aktive Zeile */
+  .editorContainer :global(.has-focus) {
+    box-shadow: none !important;
+    background-color: transparent !important;
+  }

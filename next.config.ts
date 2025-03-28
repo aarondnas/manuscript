@@ -1,12 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
   webpack(config) {
-    // Deaktiviere Source-Maps, indem du `devtool` auf false setzt
+    // Deaktiviere Source-Maps
     config.devtool = false;
+
+    // Füge SVGR hinzu, um SVGs als React-Komponenten zu importieren
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ["@svgr/webpack"],
+    });
+
     return config;
-  }
+  },
 };
 
 export default nextConfig;

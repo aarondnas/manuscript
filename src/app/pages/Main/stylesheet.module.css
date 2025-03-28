@@ -1,0 +1,5 @@
+.bodyDiv {
+    background-color: light-dark(var(--mantine-color-gray-0), var(--mantine-color-dark-6));
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
