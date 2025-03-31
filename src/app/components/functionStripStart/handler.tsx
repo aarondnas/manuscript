@@ -54,3 +54,7 @@ export const handleToggleTextColor = (editor: Editor | null, color: string) => {
   editor?.chain().focus().setColor(color).run()
 }
 
+export const handleToggleUnderline = (editor: Editor | null) => {
+  if (!editor) return;
+  editor.chain().focus().toggleUnderline().run();
+};

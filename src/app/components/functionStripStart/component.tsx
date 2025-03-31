@@ -3,7 +3,8 @@
 import { useState,  useEffect } from 'react';
 import { Editor } from "@tiptap/react";
 import { Flex, ColorInput, SimpleGrid } from "@mantine/core";
-import classes from './stylesheet.module.css';
+import classes from './styles.module.css';
+
 import {
   handleToggleHeading,
   handleToggleBold,
@@ -15,10 +16,18 @@ import {
   handleToggleBlockquote,
   handleSetHorizontalRule,
   handleToggleTaskList,
-  handleToggleTextColor
+  handleToggleTextColor,
+  handleToggleUnderline
 } from './handler';
-import BoldIcon from '@/public/icons/frontend/iconmonstr-bold.svg';
-import { iconBold } from '../svgIcons/index';
+
+
+import IconBold from '@/app/assets/icons/iconmonstr-bold.svg';
+import IconItalic from '@/app/assets/icons/iconmonstr-italics.svg';
+import IconUnderlined from '@/app/assets/icons/iconmonstr-underlined.svg';
+import IconCrossedOut from '@/app/assets/icons/iconmonstr-crossed_out.svg';
+import IconBulletList from '@/app/assets/icons/iconmonstr-bullet_list.svg';
+import IconOrderedList from '@/app/assets/icons/iconmonstr-ordered_list.svg';
+
 
 interface FunctionStripStartProps {
   editor: Editor | null;
@@ -37,7 +46,6 @@ export default function FunctionStripStart({ editor }: FunctionStripStartProps) 
     handleToggleTextColor(editor, defaultColor);
   }, [editor]);
   
-
   return (
     <div className={classes.functionStripDiv}>
       <Flex gap="xs" justify="flex-start" align="flex-center" direction="row" wrap="wrap">
@@ -49,17 +57,21 @@ export default function FunctionStripStart({ editor }: FunctionStripStartProps) 
             </button>
           ))}
         </SimpleGrid>
-        <button onClick={() => handleToggleBold(editor)}><div className={classes.svgIconDiv}><iconBold/></div></button>
-        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleItalic(editor)}>Italic</button>
+        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleBold(editor)}><IconBold className={classes.svgIcon}/></button>
+        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleItalic(editor)}><IconItalic className={classes.svgIcon}/></button>
+        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleStrike(editor)}><IconCrossedOut className={classes.svgIcon}/></button>
+        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleBulletList(editor)}><IconBulletList className={classes.svgIcon}/></button>
+        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleOrderedList(editor)}><IconOrderedList className={classes.svgIcon}/></button>
+        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleUnderline(editor)}><IconUnderlined className={classes.svgIcon}/></button>
+
+        {/*
         <button className={classes.ButtonFunctionDefault} onClick={() => { handleToggleBold(editor); handleToggleItalic(editor); }}>Bold+Italic</button>
-        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleStrike(editor)}>Strikethrough</button>
         <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleCode(editor)}>Inline Code</button>
-        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleBulletList(editor)}>Bullet List</button>
-        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleOrderedList(editor)}>Ordered List</button>
         <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleBlockquote(editor)}>Quote</button>
         <button className={classes.ButtonFunctionDefault} onClick={() => handleSetHorizontalRule(editor)}>HR</button>
-        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleTaskList(editor)}>Checkbox</button>
+        <button className={classes.ButtonFunctionDefault} onClick={() => handleToggleTaskList(editor)}>Checkbox</button>*/}
         <ColorInput
+          size="xs"
           value={valueTextColor}
           onChangeEnd={(textColor) => {
             setValue(textColor);

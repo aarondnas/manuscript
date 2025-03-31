@@ -1,5 +1,6 @@
 .functionStripDiv {
     margin: 1rem;
+    height: 3rem;
 }
 
 .ButtonFunctionDefault{
@@ -17,11 +18,7 @@
     background-color: light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
 }
 
-.svgIconDiv {
-    fill: currentColor;
-    width: 2rem;
-    height: 2rem;
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-  }
+.svgIcon {
+    transform: scale(0.5);
+    fill: white;
+}

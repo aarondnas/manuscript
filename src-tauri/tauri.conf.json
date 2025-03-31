@@ -33,6 +33,10 @@
     ]
   },
   "plugins": {
-    "dialog": null
+    "shell": {
+      "open": true
+    },
+    "dialog": null,
+    "fs": null
   }
 }

@@ -3,3 +3,7 @@ css classes:
 dont do .tipttap-container{} !
 correct: .tiptapContainer{}
 
+
+
+always name react Components upper Case: Dont do --> <iconSVG/> --> do <IconSVG/>
+Otherwise Error

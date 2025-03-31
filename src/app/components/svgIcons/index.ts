@@ -1,1 +1,0 @@
-export { default as iconBold} from './iconmonstr.bold.svg'
