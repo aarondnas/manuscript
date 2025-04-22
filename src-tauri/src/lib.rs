@@ -1,3 +1,5 @@
+// main.rs
+
 mod file_handler;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -16,7 +18,7 @@ pub fn run() {
         })
         .invoke_handler(tauri::generate_handler![
             file_handler::open_md_file,
-
+            file_handler::save_markdown_file,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

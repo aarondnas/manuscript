@@ -2,6 +2,7 @@ use std::fs;
 use std::sync::Mutex;
 use tauri::{command, State, AppHandle};
 use tauri_plugin_dialog::DialogExt;
+use std::path::PathBuf;
 
 pub struct AppState {
     last_opened_file: Mutex<Option<String>>,
@@ -28,3 +29,10 @@ pub async fn open_md_file(app: AppHandle, state: State<'_, AppState>) -> Result<
 
     Ok(content)
 }
+
+#[tauri::command]
+pub fn save_markdown_file(path: String, content: String) -> Result<(), String> {
+    let path_buf = PathBuf::from(path);
+    fs::write(path_buf, content).map_err(|e| e.to_string())
+}
+
